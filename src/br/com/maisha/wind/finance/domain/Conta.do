@@ -1,11 +1,14 @@
 package br.com.maisha.wind.finance.domain
 
-domain_object Lancamento "Lancamento"{
+import br.com.maisha.wind.finance.domain.Lancamento
+
+domain_object Conta "Conta"{
+
+	open_filtering:true
 
 	String nome "Nome"{
 		x: 1
 		y: 1
-		colspan: 2
 		required:true
 		width: 340
 	}
@@ -26,8 +29,22 @@ domain_object Lancamento "Lancamento"{
 		mask: "#,###.#0"
 	}
 	
-	operation groovy SaveLancamento "Salvar"{
-		file: br/com/maisha/wind/finance/rule/SaveConta.groovy
+	Lancamento lancamento "Lancamento"{
+		x: 1
+		y: 5
+		visibleInEdition: false
+		visibleInGrid: false
+		onetomany: conta
+	}
+	
+	operation groovy SaveConta "Salvar"{
+		file: br.com.maisha.wind.finance.rule.SaveConta
+	}
+
+	operation groovy LoadConta "Filtrar"{
+		file: br.com.maisha.wind.finance.rule.LoadConta
+		is_filter:true
+		validate:false
 	}
 
 }

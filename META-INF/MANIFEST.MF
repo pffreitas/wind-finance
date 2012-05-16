@@ -4,12 +4,22 @@ Bundle-Name: Wind-finance
 Bundle-SymbolicName: wind-finance
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: br.com.maisha.wind.finance.Activator
-Require-Bundle: wind_app_controller;bundle-version="1.0.0",
- wind_common;bundle-version="1.0.0"
+Require-Bundle: wind_common;bundle-version="1.0.0",
+ wind_app_controller;bundle-version="1.0.0",
+ wind-storage-hibernate;bundle-version="1.0.0",
+ groovy-all;bundle-version="1.8.6",
+ hibernate;bundle-version="1.0.0",
+ org.springframework.orm;bundle-version="2.5.6"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: br.com.maisha.terra,
  br.com.maisha.terra.lang,
+ javassist.util.proxy,
  javax.persistence,
- org.osgi.framework;version="1.3.0"
+ org.osgi.framework;version="1.3.0",
+ org.postgresql
 Bundle-ActivationPolicy: lazy
 Eclipse-RegisterBuddy: hibernate
+Bundle-ClassPath: .
+Export-Package: br.com.maisha.wind.finance,
+ br.com.maisha.wind.finance.rule
+ 

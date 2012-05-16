@@ -1,15 +1,18 @@
+package br.com.maisha.wind.finance.rule;
+
+import br.com.maisha.wind.controller.model.ExecutionContext
+
 class SaveLancamento{
 
-	def ctx
-	def model
-	def meta
+	def hibernateTemplate
 	
-	def execute(){
-		model.save()
-		"Lançamento realizado com sucesso".success()
+	def execute = { ExecutionContext ctx ->
+		ctx.instance.save()
+		"Lançamento realizado com sucesso".success(ctx)
 		
-		def list = model.select("from Lancamento l");
+		def list = hibernateTemplate.find("from Lancamento l");
 		ctx.setGridData(list);
+		ctx
 	}
 	
 }
